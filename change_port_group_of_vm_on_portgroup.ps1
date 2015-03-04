@@ -1,0 +1,1 @@
+Get-VM | get-networkadapter | set-networkadapter -connected $True
