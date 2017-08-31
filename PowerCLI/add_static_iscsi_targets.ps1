@@ -1,0 +1,2 @@
+get-vmhost | Get-VMHostHba -Type iScsi | New-IScsiHbaTarget -Address "10.99.17.200" -IScsiName iqn.2007-11.com.nimblestorage:vol1.san1.afg1.nor1.ems.encore.tech-v70929728833b40e3.00000002.f3a9d7cb -type static
+get-vmhost | Get-VMHostHba -Type iScsi | New-IScsiHbaTarget -Address "10.99.18.200" -IScsiName iqn.2007-11.com.nimblestorage:vol1.san1.afg1.nor1.ems.encore.tech-v70929728833b40e3.00000002.f3a9d7cb -type static
