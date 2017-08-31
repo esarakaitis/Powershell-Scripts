@@ -1,0 +1,1 @@
+Get-VM | where { ($_ | Get-NetworkAdapter | where {$_.networkname -match "VLAN_401"})} | get-networkadapter | set-networkadapter -networkname "VLAN_400"

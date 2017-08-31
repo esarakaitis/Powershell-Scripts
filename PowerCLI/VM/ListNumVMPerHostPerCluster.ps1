@@ -1,0 +1,1 @@
+Get-VMHost | Select @{N=“Cluster“;E={Get-Cluster -VMHost $_}}, Name, @{N=“NumVM“;E={($_ | Get-VM).Count}} | Sort Cluster, Name | Export-Csv -NoTypeInformation c:\clu-host-numvm.csv

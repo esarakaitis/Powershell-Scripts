@@ -1,0 +1,1 @@
+get-vmhost | % {(get-view $_.id).config.filesystemvolume.mountinfo | % {$_.Volume}} | select name, extent
