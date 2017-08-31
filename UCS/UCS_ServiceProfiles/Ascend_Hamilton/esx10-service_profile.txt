@@ -1,0 +1,162 @@
+scope org
+create service-profile esx10 instance
+         enter vhba fc0 fabric a 
+             set adapter-policy VMWare
+             set fabric a
+             set fc-if name VSAN10
+             set identity dynamic-wwpn 20:00:00:25:B5:02:a1:10
+             set max-field-size 2048
+             set order 1
+             set pers-bind disabled
+             set pin-group ""
+             set qos-policy ""
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vhba fc1 fabric b 
+             set adapter-policy VMWare
+             set fabric b
+             set fc-if name VSAN20
+             set identity dynamic-wwpn 20:00:00:25:B5:02:b1:10
+             set max-field-size 2048
+             set order 2
+             set pers-bind disabled
+             set pin-group ""
+             set qos-policy ""
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vnic eth0 fabric a 
+             enter eth-if ESX_MGMT
+                 set default-net yes
+             exit
+             set adapter-policy VMWare
+             set fabric a
+             set identity dynamic-mac 00:25:b5:02:a1:10
+             set mtu 1500
+             set nw-control-policy ""
+             set order 5
+             set pin-group ""
+             set qos-policy Gold
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vnic eth1 fabric b 
+             enter eth-if ESX_MGMT
+                 set default-net yes
+             exit
+             set adapter-policy VMWare
+             set fabric b
+             set identity dynamic-mac 00:25:b5:02:b1:10
+             set mtu 1500
+             set nw-control-policy ""
+             set order 6
+             set pin-group ""
+             set qos-policy Gold
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vnic eth2_vmk fabric a 
+             enter eth-if ESX_VMKernel
+                 set default-net yes
+             exit
+             set adapter-policy VMWare
+             set fabric a
+             set identity dynamic-mac 00:25:b5:02:a2:10
+             set mtu 9000
+             set nw-control-policy ""
+             set order 7
+             set pin-group ""
+             set qos-policy Silver
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vnic eth3_vmk fabric b 
+             enter eth-if ESX_VMKernel
+                 set default-net yes
+             exit
+             set adapter-policy VMWare
+             set fabric b
+             set identity dynamic-mac 00:25:b5:02:b2:10
+             set mtu 9000
+             set nw-control-policy ""
+             set order 8
+             set pin-group ""
+             set qos-policy Silver
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vnic eth4_guest fabric a 
+             enter eth-if VC_SQL
+                 set default-net no
+             exit
+             enter eth-if Utility
+                 set default-net no
+             exit
+             set adapter-policy VMWare
+             set fabric a
+             set identity dynamic-mac 00:25:b5:02:a3:10
+             set mtu 9000
+             set nw-control-policy ""
+             set order 9
+             set pin-group ""
+             set qos-policy BE
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         enter vnic eth5_guest fabric b 
+             enter eth-if VC_SQL
+                 set default-net no
+             exit
+             enter eth-if Utility
+                 set default-net no
+             exit
+             set adapter-policy VMWare
+             set fabric b
+             set identity dynamic-mac 00:25:b5:02:b3:10
+             set mtu 9000
+             set nw-control-policy ""
+             set order 10
+             set pin-group ""
+             set qos-policy BE
+             set stats-policy default
+             set template-name ""
+             set vcon any
+         exit
+
+         set bios-policy ""
+         set boot-policy default
+         set descr ""
+         set dynamic-vnic-conn-policy ""
+         set ext-mgmt-ip-state pooled
+         set host-fw-policy ""
+         set identity dynamic-wwnn 20:00:00:25:B5:00:02:10
+         set ipmi-access-profile ""
+         set local-disk-policy Local_Raid1
+         set maint-policy ""
+         set mgmt-fw-policy ""
+         set power-control-policy default
+         set scrub-policy ""
+         set sol-policy ""
+         set src-templ-name ""
+         set stats-policy default
+         set user-label ""
+         set vcon-policy ""
+     exit
+
+commit-buffer
+

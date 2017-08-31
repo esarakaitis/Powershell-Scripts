@@ -1,0 +1,1264 @@
+CC
+***W A R N I N G***
+THIS IS A PRIVATE COMPUTER SYSTEM.
+This computer system including all related equipment, network devices, are provided only for authorized use.
+All computer systems may be monitored for all lawful purposes, including those activities that are authorized for management of the system.
+All information including personal information, stored or sent over this system may be monitored.
+Uses of this system, authorized or unauthorized, constitutes consent to monitoring of this system.
+Unauthorized use may subject you to criminal prosecution.
+WARNING: Unauthorized access to this system is forbidden and will be prosecuted by law.
+By accessing this system, you agree that your actions may be monitored.
+
+DURINFRA-AMPSW1#term len 0
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show ver
+Cisco IOS Software, C3560E Software (C3560E-UNIVERSALK9-M), Version 12.2(55)SE1, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Thu 02-Dec-10 06:44 by prod_rel_team
+Image text-base: 0x00003000, data-base: 0x02800000
+
+ROM: Bootstrap program is C3560E boot loader
+BOOTLDR: C3560E Boot Loader (C3560X-HBOOT-M) Version 12.2(53r)SE2, RELEASE SOFTWARE (fc1)
+
+DURINFRA-AMPSW1 uptime is 5 days, 22 hours, 34 minutes
+System returned to ROM by power-on
+System image file is "flash:c3560e-universalk9-mz.122-55.SE1.bin"
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+License Level: ipbase
+License Type: Permanent
+Next reload license Level: ipbase
+
+cisco WS-C3560X-24 (PowerPC405) processor (revision A0) with 262144K bytes of memory.
+Processor board ID FDO1545W0FP
+Last reset from power-on
+5 Virtual Ethernet interfaces
+1 FastEthernet interface
+28 Gigabit Ethernet interfaces
+2 Ten Gigabit Ethernet interfaces
+The password-recovery mechanism is enabled.
+
+512K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : 28:94:0F:26:A2:80
+Motherboard assembly number     : 73-12554-05
+Motherboard serial number       : FDO15460182
+Model revision number           : A0
+Motherboard revision number     : C0
+Model number                    : WS-C3560X-24T-S
+Daughterboard assembly number   : 800-32786-01
+Daughterboard serial number     : FDO15442695
+System serial number            : FDO1545W0FP
+Top Assembly Part Number        : 800-31331-02
+Top Assembly Revision Number    : E0
+Version ID                      : V02
+CLEI Code Number                : COMJU00ARB
+Hardware Board Revision Number  : 0x03
+
+
+Switch Ports Model              SW Version            SW Image                 
+------ ----- -----              ----------            ----------               
+*    1 30    WS-C3560X-24       12.2(55)SE1           C3560E-UNIVERSALK9-M     
+
+
+Configuration register is 0xF
+
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show spanning-tree root
+
+                                        Root    Hello Max Fwd
+Vlan                   Root ID          Cost    Time  Age Dly  Root Port
+---------------- -------------------- --------- ----- --- ---  ------------
+VLAN0090         41050 2894.0f26.a280         0    2   20  15                  
+VLAN0101         41061 2894.0f26.a280         0    2   20  15                  
+VLAN0102         41062 2894.0f26.a280         0    2   20  15                  
+VLAN0104         41064 2894.0f26.a280         0    2   20  15                  
+VLAN0105         41065 2894.0f26.a280         0    2   20  15                  
+VLAN0110         41070 2894.0f26.a280         0    2   20  15                  
+VLAN0111         41071 2894.0f26.a280         0    2   20  15                  
+VLAN0112         41072 2894.0f26.a280         0    2   20  15                  
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show vlan 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi1/1, Gi1/2, Gi1/3, Gi1/4
+90   VLAN0090                         active    Gi0/24
+101  Management-Infra                 active    Gi0/2, Gi0/3, Gi0/4, Gi0/5
+                                                Gi0/8, Gi0/13, Gi0/14, Gi0/15
+                                                Gi0/16, Gi0/17, Gi0/18, Gi0/19
+                                                Gi0/20, Gi0/21, Gi0/22, Gi0/23
+102  AMP_NAS-Infra                    active    Po20
+104  ucs_mgmt_kvm-Infra               active    Gi0/1
+105  vblock_esx_mgmt-Infra            active    
+110  vblock_esx_build-Infra           active    
+111  vblock_n1k_packet_Infra          active    
+112  vblock_n1k_control-Infra         active    
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0   
+90   enet  100090     1500  -      -      -        -    -        0      0   
+101  enet  100101     1500  -      -      -        -    -        0      0   
+102  enet  100102     1500  -      -      -        -    -        0      0   
+104  enet  100104     1500  -      -      -        -    -        0      0   
+105  enet  100105     1500  -      -      -        -    -        0      0   
+110  enet  100110     1500  -      -      -        -    -        0      0   
+111  enet  100111     1500  -      -      -        -    -        0      0   
+112  enet  100112     1500  -      -      -        -    -        0      0   
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show ip int brief | e unassign
+Interface              IP-Address      OK? Method Status                Protocol
+Vlan90                 10.100.0.200    YES NVRAM  up                    up      
+Vlan101                10.100.101.2    YES NVRAM  up                    up      
+Vlan104                10.100.104.2    YES NVRAM  up                    up      
+Vlan105                10.100.105.2    YES manual up                    up      
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show standby brief
+                     P indicates configured to preempt.
+                     |
+Interface   Grp  Pri P State   Active          Standby         Virtual IP
+Vl101       101  105 P Active  local           10.100.101.3    10.100.101.1
+Vl104       104  105 P Active  local           10.100.104.3    10.100.104.1
+Vl105       105  105 P Active  local           10.100.105.3    10.100.105.1
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show int description
+Interface                      Status         Protocol Description
+Vl1                            admin down     down     
+Vl90                           up             up       
+Vl101                          up             up       
+Vl104                          up             up       
+Vl105                          up             up       
+Fa0                            admin down     down     
+Gi0/1                          up             up       VT001F120-A_mgmt0
+Gi0/2                          up             up       VT001NX5201_mgmt0
+Gi0/3                          up             up       9148-A_mgmt0
+Gi0/4                          up             up       Vblock_Storage_Mgmt_A
+Gi0/5                          up             up       C200A_CIMC
+Gi0/6                          up             up       To_C200A_G1
+Gi0/7                          up             up       To_C200B_G1
+Gi0/8                          up             up       VNXe_3100_SP-A_Management
+Gi0/9                          up             up       To_VNXe_3100_SP-A
+Gi0/10                         up             up       To_VNXe_3100_SP-A
+Gi0/11                         up             up       To_C3560B
+Gi0/12                         up             up       To_C3560B
+Gi0/13                         up             up       POU-A
+Gi0/14                         up             up       POU-C
+Gi0/15                         up             up       POU-E
+Gi0/16                         down           down     POU-G
+Gi0/17                         down           down     POU-I
+Gi0/18                         down           down     POU-K
+Gi0/19                         down           down     RPA_7_LAN
+Gi0/20                         down           down     RPA_5_LAN
+Gi0/21                         down           down     RPA_3_LAN
+Gi0/22                         down           down     RPA_1_LAN
+Gi0/23                         down           down     VMAX_Control_Station-0
+Gi0/24                         up             up       
+Gi1/1                          down           down     
+Gi1/2                          down           down     
+Gi1/3                          down           down     
+Gi1/4                          down           down     
+Te1/1                          up             up       To_5548-A_Port_E1/21
+Te1/2                          up             up       To_5548-B_Port_E1/21 
+Po10                           up             up       Port_Channel_To_C3560B
+Po20                           up             up       Port_Channel_To_VNXe_3100_SP-A
+Po37                           up             up       Port_Channel_To_Nexus_5Ks
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#exit
+CC
+***W A R N I N G***
+THIS IS A PRIVATE COMPUTER SYSTEM.
+This computer system including all related equipment, network devices, are provided only for authorized use.
+All computer systems may be monitored for all lawful purposes, including those activities that are authorized for management of the system.
+All information including personal information, stored or sent over this system may be monitored.
+Uses of this system, authorized or unauthorized, constitutes consent to monitoring of this system.
+Unauthorized use may subject you to criminal prosecution.
+WARNING: Unauthorized access to this system is forbidden and will be prosecuted by law.
+By accessing this system, you agree that your actions may be monitored.
+
+DURINFRA-AMPSW1#term len 0
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show etherchannel summary 
+Flags:  D - down        P - bundled in port-channel
+        I - stand-alone s - suspended
+        H - Hot-standby (LACP only)
+        R - Layer3      S - Layer2
+        U - in use      f - failed to allocate aggregator
+
+        M - not in use, minimum links not met
+        u - unsuitable for bundling
+        w - waiting to be aggregated
+        d - default port
+
+
+Number of channel-groups in use: 3
+Number of aggregators:           3
+
+Group  Port-channel  Protocol    Ports
+------+-------------+-----------+-----------------------------------------------
+10     Po10(SU)        LACP      Gi0/11(P)   Gi0/12(P)   
+20     Po20(SU)        LACP      Gi0/9(P)    Gi0/10(P)   
+37     Po37(SU)        LACP      Te1/1(P)    Te1/2(P)    
+
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show etherchannel detail 
+		Channel-group listing: 
+		----------------------
+
+Group: 10 
+----------
+Group state = L2 
+Ports: 2   Maxports = 16
+Port-channels: 1 Max Port-channels = 16
+Protocol:   LACP
+Minimum Links: 0
+		Ports in the group:
+		-------------------
+Port: Gi0/11
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 10          Mode = Active          Gcchange = -
+Port-channel  = Po10        GC   =   -             Pseudo port-channel = Po10
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Gi0/11    SA      bndl      32768         0xA       0xA     0x10C       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Gi0/11    SA      32768     2894.0f1f.9100   3s    0x0    0xA    0x10C   0x3D  
+
+Age of the port in the current state: 5d:22h:33m:17s
+
+Port: Gi0/12
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 10          Mode = Active          Gcchange = -
+Port-channel  = Po10        GC   =   -             Pseudo port-channel = Po10
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Gi0/12    SA      bndl      32768         0xA       0xA     0x10D       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Gi0/12    SA      32768     2894.0f1f.9100   1s    0x0    0xA    0x10D   0x3D  
+
+Age of the port in the current state: 5d:22h:33m:17s
+
+		Port-channels in the group: 
+		---------------------------
+
+Port-channel: Po10    (Primary Aggregator)
+
+------------
+
+Age of the Port-channel   = 5d:22h:33m:34s
+Logical slot/port   = 2/10          Number of ports = 2
+HotStandBy port = null 
+Port state          = Port-channel Ag-Inuse 
+Protocol            =   LACP
+Port security       = Disabled
+
+Ports in the Port-channel: 
+
+Index   Load   Port     EC state        No of bits
+------+------+------+------------------+-----------
+  0     00     Gi0/11   Active             0
+  0     00     Gi0/12   Active             0
+
+Time since last port bundled:    5d:22h:33m:17s    Gi0/11
+
+Group: 20 
+----------
+Group state = L2 
+Ports: 2   Maxports = 16
+Port-channels: 1 Max Port-channels = 16
+Protocol:   LACP
+Minimum Links: 0
+		Ports in the group:
+		-------------------
+Port: Gi0/9
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 20          Mode = Active          Gcchange = -
+Port-channel  = Po20        GC   =   -             Pseudo port-channel = Po20
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Gi0/9     SA      bndl      32768         0x14      0x14    0x10A       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Gi0/9     SA      255       0060.163b.04e0  26s    0x0    0x9    0x1     0x3D  
+
+Age of the port in the current state: 5d:00h:27m:45s
+
+Port: Gi0/10
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 20          Mode = Active          Gcchange = -
+Port-channel  = Po20        GC   =   -             Pseudo port-channel = Po20
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Gi0/10    SA      bndl      32768         0x14      0x14    0x10B       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Gi0/10    SA      255       0060.163b.04e0  20s    0x0    0x9    0x2     0x3D  
+
+Age of the port in the current state: 5d:00h:26m:38s
+
+		Port-channels in the group: 
+		---------------------------
+
+Port-channel: Po20    (Primary Aggregator)
+
+------------
+
+Age of the Port-channel   = 5d:22h:33m:34s
+Logical slot/port   = 2/20          Number of ports = 2
+HotStandBy port = null 
+Port state          = Port-channel Ag-Inuse 
+Protocol            =   LACP
+Port security       = Disabled
+
+Ports in the Port-channel: 
+
+Index   Load   Port     EC state        No of bits
+------+------+------+------------------+-----------
+  0     00     Gi0/9    Active             0
+  0     00     Gi0/10   Active             0
+
+Time since last port bundled:    5d:00h:26m:38s    Gi0/10
+Time since last port Un-bundled: 5d:00h:27m:49s    Gi0/9
+
+Group: 37 
+----------
+Group state = L2 
+Ports: 2   Maxports = 16
+Port-channels: 1 Max Port-channels = 16
+Protocol:   LACP
+Minimum Links: 0
+		Ports in the group:
+		-------------------
+Port: Te1/1
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 37          Mode = Active          Gcchange = -
+Port-channel  = Po37        GC   =   -             Pseudo port-channel = Po37
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Te1/1     SA      bndl      32768         0x25      0x25    0x11E       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Te1/1     SA      32768     0023.04ee.be32  28s    0x0    0x8025 0x115   0x3D  
+
+Age of the port in the current state: 5d:21h:25m:14s
+
+Port: Te1/2
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 37          Mode = Active          Gcchange = -
+Port-channel  = Po37        GC   =   -             Pseudo port-channel = Po37
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Te1/2     SA      bndl      32768         0x25      0x25    0x11F       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Te1/2     SA      32768     0023.04ee.be32  15s    0x0    0x8025 0x4115  0x3D  
+
+Age of the port in the current state: 5d:21h:25m:05s
+
+		Port-channels in the group: 
+		---------------------------
+
+Port-channel: Po37    (Primary Aggregator)
+
+------------
+
+Age of the Port-channel   = 5d:22h:33m:34s
+Logical slot/port   = 2/37          Number of ports = 2
+HotStandBy port = null 
+Port state          = Port-channel Ag-Inuse 
+Protocol            =   LACP
+Port security       = Disabled
+
+Ports in the Port-channel: 
+
+Index   Load   Port     EC state        No of bits
+------+------+------+------------------+-----------
+  0     00     Te1/1    Active             0
+  0     00     Te1/2    Active             0
+
+Time since last port bundled:    5d:21h:25m:05s    Te1/2
+Time since last port Un-bundled: 5d:21h:25m:13s    Te1/2
+
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#exit
+CC
+***W A R N I N G***
+THIS IS A PRIVATE COMPUTER SYSTEM.
+This computer system including all related equipment, network devices, are provided only for authorized use.
+All computer systems may be monitored for all lawful purposes, including those activities that are authorized for management of the system.
+All information including personal information, stored or sent over this system may be monitored.
+Uses of this system, authorized or unauthorized, constitutes consent to monitoring of this system.
+Unauthorized use may subject you to criminal prosecution.
+WARNING: Unauthorized access to this system is forbidden and will be prosecuted by law.
+By accessing this system, you agree that your actions may be monitored.
+
+DURINFRA-AMPSW1#term len 0
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show cdp nei 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+DURINFRA-MD9101(AMS15320574)
+                 Gig 0/3           175            R S I C DS-C9148- mgmt0
+DURINFRA-AMPSW2.goss.gossinternational.c
+                 Gig 0/12          121             R S I  WS-C3560X Gig 0/12
+DURINFRA-AMPSW2.goss.gossinternational.c
+                 Gig 0/11          121             R S I  WS-C3560X Gig 0/11
+vblock.vblock.local
+                 Gig 0/24          120             R S I  2811      Fas 0/1
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show int switchport
+Name: Gi0/1
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 104 (ucs_mgmt_kvm-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/2
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/3
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/4
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/5
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/6
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: 101,102,104,105,110-112
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/7
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: 101,102,104,105,110-112
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/8
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/9
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access (member of bundle Po20)
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 102 (AMP_NAS-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/10
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access (member of bundle Po20)
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 102 (AMP_NAS-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/11
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk (member of bundle Po10)
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: 90,101,102,104,105,110-112
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/12
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk (member of bundle Po10)
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: 90,101,102,104,105,110-112
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/13
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unknown unicast blocked: disabled
+Unknown multicast blocked: disabled
+Appliance trust: none
+
+Name: Gi0/14
+Switchport: Enabled
+Administrative Mode: dynamic auto
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: On
+Access Mode VLAN: 101 (Management-Infra)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none 
+Administrative private-vlan mapping: none 
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+
+Protected: false
+Unk
+RUNNINGSTART
+CC
+***W A R N I N G***
+THIS IS A PRIVATE COMPUTER SYSTEM.
+This computer system including all related equipment, network devices, are provided only for authorized use.
+All computer systems may be monitored for all lawful purposes, including those activities that are authorized for management of the system.
+All information including personal information, stored or sent over this system may be monitored.
+Uses of this system, authorized or unauthorized, constitutes consent to monitoring of this system.
+Unauthorized use may subject you to criminal prosecution.
+WARNING: Unauthorized access to this system is forbidden and will be prosecuted by law.
+By accessing this system, you agree that your actions may be monitored.
+
+DURINFRA-AMPSW1#term len 0
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#show running
+Building configuration...
+
+Current configuration : 7233 bytes
+!
+version 12.2
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+!
+hostname DURINFRA-AMPSW1
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 51200 informational
+enable secret 5 $1$7lA0$TfCHDZ4EXJyxnh2GrZc7e/
+!
+username admin privilege 15 secret 5 $1$MO1F$c49pLc1jU/tJcDxWb3hVR.
+!
+!
+no aaa new-model
+clock timezone EST -5
+clock summer-time EDT recurring
+system mtu routing 1500
+no ip source-route
+ip routing
+!
+!
+no ip domain-lookup
+ip domain-name goss.gossinternational.com
+vtp mode transparent
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+spanning-tree portfast bpdufilter default
+spanning-tree extend system-id
+spanning-tree vlan 1-4094 priority 40960
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 90 
+!
+vlan 101
+ name Management-Infra
+!
+vlan 102
+ name AMP_NAS-Infra
+!
+vlan 104
+ name ucs_mgmt_kvm-Infra
+!
+vlan 105
+ name vblock_esx_mgmt-Infra
+!
+vlan 110
+ name vblock_esx_build-Infra
+!
+vlan 111
+ name vblock_n1k_packet_Infra
+!
+vlan 112
+ name vblock_n1k_control-Infra
+!
+ip ftp username Devtest
+ip ftp password 7 06305E33585B2948064453
+ip ssh time-out 60
+ip ssh authentication-retries 2
+ip ssh version 2
+!
+!
+interface Port-channel10
+ description Port_Channel_To_C3560B
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 90,101,102,104,105,110-112
+ switchport mode trunk
+!
+interface Port-channel20
+ description Port_Channel_To_VNXe_3100_SP-A
+ switchport access vlan 102
+ switchport mode access
+ flowcontrol receive on
+!
+interface Port-channel37
+ description Port_Channel_To_Nexus_5Ks
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 105,110-112
+ switchport mode trunk
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache cef
+ no ip route-cache
+ no ip mroute-cache
+ shutdown
+!
+interface GigabitEthernet0/1
+ description VT001F120-A_mgmt0
+ switchport access vlan 104
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description VT001NX5201_mgmt0
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ description 9148-A_mgmt0
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ description Vblock_Storage_Mgmt_A
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ description C200A_CIMC
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ description To_C200A_G1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 101,102,104,105,110-112
+ switchport mode trunk
+ flowcontrol receive on
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet0/7
+ description To_C200B_G1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 101,102,104,105,110-112
+ switchport mode trunk
+ flowcontrol receive on
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet0/8
+ description VNXe_3100_SP-A_Management
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ description To_VNXe_3100_SP-A
+ switchport access vlan 102
+ switchport mode access
+ flowcontrol receive on
+ channel-group 20 mode active
+!
+interface GigabitEthernet0/10
+ description To_VNXe_3100_SP-A
+ switchport access vlan 102
+ switchport mode access
+ flowcontrol receive on
+ channel-group 20 mode active
+!
+interface GigabitEthernet0/11
+ description To_C3560B
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 90,101,102,104,105,110-112
+ switchport mode trunk
+ channel-group 10 mode active
+!
+interface GigabitEthernet0/12
+ description To_C3560B
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 90,101,102,104,105,110-112
+ switchport mode trunk
+ channel-group 10 mode active
+!
+interface GigabitEthernet0/13
+ description POU-A
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/14
+ description POU-C
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ description POU-E
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ description POU-G
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ description POU-I
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ description POU-K
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ description RPA_7_LAN
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ description RPA_5_LAN
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ description RPA_3_LAN
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/22
+ description RPA_1_LAN
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ description VMAX_Control_Station-0
+ switchport access vlan 101
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ switchport access vlan 90
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet1/3
+!
+interface GigabitEthernet1/4
+!
+interface TenGigabitEthernet1/1
+ description To_5548-A_Port_E1/21
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 105,110-112
+ switchport mode trunk
+ channel-group 37 mode active
+!
+interface TenGigabitEthernet1/2
+ description To_5548-B_Port_E1/21 
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 105,110-112
+ switchport mode trunk
+ channel-group 37 mode active
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan90
+ ip address 10.100.0.200 255.255.255.0
+!
+interface Vlan101
+ ip address 10.100.101.2 255.255.255.0
+ standby 101 ip 10.100.101.1
+ standby 101 priority 105
+ standby 101 preempt
+ standby 101 authentication Vce12345
+!
+interface Vlan104
+ ip address 10.100.104.2 255.255.255.0
+ standby 104 ip 10.100.104.1
+ standby 104 priority 105
+ standby 104 preempt
+ standby 104 authentication Vce12345
+!
+interface Vlan105
+ ip address 10.100.105.2 255.255.255.0
+ standby 105 ip 10.100.105.1
+ standby 105 priority 105
+ standby 105 preempt
+ standby 105 authentication Vce12345
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.100.0.1
+no ip http server
+no ip http secure-server
+!
+ip sla enable reaction-alerts
+!
+banner motd ^CCC
+***W A R N I N G***
+THIS IS A PRIVATE COMPUTER SYSTEM.
+This computer system including all related equipment, network devices, are provided only for authorized use.
+All computer systems may be monitored for all lawful purposes, including those activities that are authorized for management of the system.
+All information including personal information, stored or sent over this system may be monitored.
+Uses of this system, authorized or unauthorized, constitutes consent to monitoring of this system.
+Unauthorized use may subject you to criminal prosecution.
+WARNING: Unauthorized access to this system is forbidden and will be prosecuted by law.
+By accessing this system, you agree that your actions may be monitored.
+^C
+!
+line con 0
+ exec-timeout 5 0
+ login local
+line vty 0 4
+ exec-timeout 5 0
+ privilege level 15
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+ntp server 10.104.9.20
+end
+
+DURINFRA-AMPSW1#
+DURINFRA-AMPSW1#exit

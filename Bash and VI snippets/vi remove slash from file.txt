@@ -1,0 +1,2 @@
+# remove / from file
+:%s#/##g

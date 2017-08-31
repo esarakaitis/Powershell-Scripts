@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>
+  </capabilities>
+</hello>
+]]>]]>
+
+<?xml version="1.0"?>
+   <nc:rpc message-id="1" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0"
+     xmlns="http://www.cisco.com/nxos:1.0:sysmgrcli">
+<nc:get><nc:filter type="subtree">
+<show><version></version></show>
+<show><interface><brief></brief></interface></show>
+<show><interface><descr></descr></interface></show>
+<show><inventory></inventory></show>
+<show><vlan></vlan></show>
+<show><license><usage></usage></license></show>
+<show><port-profile></port-profile></show>
+<show><port-profile><brief></brief></port-profile></show>
+<show><module></module></show>
+<show><interface><switchport></switchport></interface></show>
+<show><port-channel><summary></summary></port-channel></show>
+<show><svs><connection></connection></svs></show>
+<show><svs><neighbor></neighbor></svs></show>
+<show><svs><domain></domain></svs></show>
+</nc:filter></nc:get></nc:rpc>]]>]]>

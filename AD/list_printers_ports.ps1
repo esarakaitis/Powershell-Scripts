@@ -1,0 +1,1 @@
+Get-WMIObject -class Win32_Printer -computer ccs717wvps1 | Select Name,DriverName,PortName > c:\ccs717wvps1.txt

@@ -1,0 +1,1 @@
+$ sed -i 's/ugly/beautiful/g' /home/bruno/old-friends/sue.txt
