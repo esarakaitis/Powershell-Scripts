@@ -1,1 +1,0 @@
-get-vmhost | % {(get-view $_.id).config.vmotion.ipconfig} | select ipaddress, subnetmask

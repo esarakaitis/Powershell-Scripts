@@ -1,1 +1,0 @@
-get-vm | % { get-view $_.ID } | select Name, @{ Name="ToolsStatus"; Expression={$_.guest.toolsstatus}}, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}}

@@ -1,1 +1,0 @@
-Get-VM | Get-View | where-object {$_.Config.Tools.syncTimeWithHost -eq $False -and $_.name -notcontains "dc"} | select name

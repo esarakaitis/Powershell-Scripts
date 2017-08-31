@@ -1,1 +1,0 @@
-﻿Get-Vm | % {(Get-View $_.ID) | Where-Object {$_.config.datastoreurl.count -gt 1}} | select name

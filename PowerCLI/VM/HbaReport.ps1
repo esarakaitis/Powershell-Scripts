@@ -1,1 +1,0 @@
-Get-VMhost | Foreach-Object {$vmhost=$_; (Get-View $vmhost.Id).Config.StorageDevice.HostBusAdapter | Select-Object @{Name="Hostname"; Expression={$vmhost.Name}}, PortWorldWideName, NodeWorldWideName, Device, Speed, Status, Model, Driver}

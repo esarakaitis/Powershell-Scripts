@@ -1,1 +1,0 @@
-Get-VMHost vmh2.afg1.nor1.ems.encore.tech | Get-VMHostNetworkAdapter | Where { $_.GetType().Name -eq "HostVMKernelVirtualNicImpl" } | Foreach { $_ | Set-VMHostNetworkAdapter -Mtu 9000 -Confirm:$false }

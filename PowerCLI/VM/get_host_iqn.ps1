@@ -1,1 +1,0 @@
-Get-VMHost|get-VMHostHBA -Type iScsi | Where {$_.Model -eq "iSCSI Software Adapter"}| Select VMhost, IScsiname|Sort-Object VMHost | ft -a

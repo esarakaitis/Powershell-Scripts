@@ -1,2 +1,0 @@
-Set-VMHostService -HostService (Get-VMHostservice -VMHost (Get-VMHost) | Where-Object {$_.key -eq "ntpd"}) -policy "automatic"
-Start-VMHostService -HostService (Get-VMHostservice -VMHost (Get-VMHost) | Where-Object {$_.key -eq "ntpd"})

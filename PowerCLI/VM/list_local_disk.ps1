@@ -1,1 +1,0 @@
-get-vmhost "entlabsc03evdu.esx.oclc.org" | % {(get-view $_.id).config.storagedevice.scsilun} | select capacity

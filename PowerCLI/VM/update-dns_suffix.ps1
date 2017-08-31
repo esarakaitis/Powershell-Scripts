@@ -1,1 +1,0 @@
-get-cluster "Lab Manager" | get-vmhost | get-vmhostnetwork | set-vmhostnetwork -searchdomain "one.lab.org", "two.lab.org"

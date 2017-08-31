@@ -1,1 +1,0 @@
-Get-VMHost | Set-VMHost -State maintenance    
