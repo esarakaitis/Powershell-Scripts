@@ -1,32 +1,63 @@
-$VMhosts = Get-VMHost | Where-Object { $_.ConnectionState -eq "Connected" } | sort-object Name
-$esxcli = Get-VMHost $VMHost | Get-EsxCli
-$report = @()
-foreach ($VMHost in $VMHosts){
-	#Get list of network interfaces on host
-	$VMHostNetworkAdapters = Get-VMHost $VMHost | Get-VMHostNetworkAdapter -Physical
-	foreach ($VMNic in $VMHostNetworkAdapters) {
-    $objDriverInfo = ($esxcli.network.nic.get($VMNic.Name)).DriverInfo
-$report += "" | Select-Object @{N = "Hostname"; E = { $vmhost.Name } },
-    @{N = "Server-Model"; E = { $ESXHost.Model } },
-    @{N = "Server Bios Version"; E = { $hostview.Hardware.BiosInfo.BiosVersion } },
-    @{N = "vNIC-Name"; E = { $VMNic.Name } },
-    @{N = "vNIC-Driver-Name"; E = { $objDriverInfo.Driver } },
-    @{N = "vNIC-Driver-Version"; E = { $objDriverInfo.Version } },
-    @{N = "vNIC-Driver-Firmware"; E = { $objDriverInfo.FirmwareVersion } }
- }
+
+ 
+#region Get List of Hosts
+if ($ClusterName)
+{
+	$VMHosts = Get-Cluster -Name $ClusterName | Get-VMHost | Where-Object { $_.ConnectionState -eq "Connected" }
 }
-$report2 = @()
-$lpfc = $esxcli.system.module.list() | Where-Object { $_.Name -eq '*' }
+else
+{
+	$VMhosts = Get-VMHost | Where-Object { $_.ConnectionState -eq "Connected" }
+}
+#endregion Get List of Hosts
+ 
+$results = @()
 foreach ($VMHost in $VMHosts)
 {
-write-host "current host is $VMHost"
-foreach ($vmhba in get-vmhosthba -VMHost $VMHost) {
- $report2 += "" | Select-Object @{N = "Hostname"; E = { $vmhost.Name } },
-  @{N = "HBA Model"; E = { ($vmhba | select-object -ExpandProperty Model) -join ", " } },
-  @{N = "Driver"; E = { ($vmhba | select-object -ExpandProperty Driver) -join ", " } },
-  @{N = 'HBA-Module'; E = { $lpfc.Module } },
-  @{N = 'HBA-Version'; E = { $lpfc.Version } }
-  }
+	#Get list of network interfaces on host
+	$VMHostNetworkAdapters = Get-VMHost $VMHost | Get-VMHostNetworkAdapter | Where-Object { $_.Name -like "vmnic*" }
+	
+	$esxcli = Get-VMHost $VMHost | Get-EsxCli
+    $hostview = $VMHost | Get-View
+    $hostbios = $hostview.Hardware.BiosInfo.BiosVersion
+
+#generate NIC report	
+	$arrNicDetail = @()
+	foreach ($VMNic in $VMHostNetworkAdapters)
+	{
+		$objOneNic = New-Object System.Object
+		$objDriverInfo = ($esxcli.network.nic.get($VMNic.Name)).DriverInfo
+		
+		$objOneNic | Add-Member -type NoteProperty -name Host_Name -Value $VMHost.Name
+ 		$objOneNic | Add-Member -type NoteProperty -name VMNic_Name -Value $VMNic.Name
+		$objOneNic | Add-Member -type NoteProperty -name DriverName -Value $objDriverInfo.Driver
+		$objOneNic | Add-Member -type NoteProperty -name DriverVersion -Value $objDriverInfo.Version
+		$objOneNic | Add-Member -type NoteProperty -name FirmwareVersion -Value $objDriverInfo.FirmwareVersion
+        $objOneNic | Add-Member -type NoteProperty -name HostBiosVersion -Value $hostbios
+		$arrNicDetail += $objOneNic
+	}
+	
+	$results += $arrNicDetail
 }
-$report | ft
-$report2 | ft
+ 
+$results | Export-Csv "C:\Users\Eric Sarakaitis\Documents\testreport.csv"
+
+$results2 = @()
+foreach ($VMHost in $VMHosts){
+  $esxcli = Get-VMHost $VMHost | Get-EsxCli
+  $lpfc = $esxcli.system.module.list() | Where-Object { $_.Name -eq '*' }
+  #generate HBA report	
+  $arrHBADetail = @()
+  $HBAs = $VMHost | Get-VMHostHba | Where-Object {$_.Model -ne 'iSCSI Software Adapter'}
+  foreach ($vmhba in $HBAs) {
+    $objOneHBA = New-Object PSObject
+    $objOneHBA | Add-Member -type NoteProperty -name Host_Name -Value $VMHost.Name
+    $objOneHBA | Add-Member -type NoteProperty -name HBA_Name -Value $VMHba.Name
+    $objOneHBA | Add-Member -type NoteProperty -name HBA_Model -Value $VMHba.Model
+    $objOneHBA | Add-Member -type NoteProperty -name HBA_Module -Value $lpfc.Module
+    $objOneHBA | Add-Member -type NoteProperty -name HBA_Version -Value $lpfc.Versions
+    $arrHBADetail += $objOneHBA
+  }
+ $results2 += $arrHBADetail
+} 
+$results2 | Export-Csv "C:\Users\Eric Sarakaitis\Documents\testreport2.csv"
