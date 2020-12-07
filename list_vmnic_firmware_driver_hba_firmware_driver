@@ -42,6 +42,7 @@ foreach ($VMHost in $VMHosts)
  
 $results | Export-Csv "C:\Users\Eric Sarakaitis\Documents\testreport.csv"
 
+#endregion Get List of Hosts
 $results2 = @()
 foreach ($VMHost in $VMHosts){
   $esxcli = Get-VMHost $VMHost | Get-EsxCli
@@ -50,14 +51,16 @@ foreach ($VMHost in $VMHosts){
   $arrHBADetail = @()
   $HBAs = $VMHost | Get-VMHostHba | Where-Object {$_.Model -ne 'iSCSI Software Adapter'}
   foreach ($vmhba in $HBAs) {
+    $driver_name = $vmhba.Driver
+    $driver_version = $esxcli.system.module.get($driver_name) | select-object -Expandproperty Version
     $objOneHBA = New-Object PSObject
     $objOneHBA | Add-Member -type NoteProperty -name Host_Name -Value $VMHost.Name
     $objOneHBA | Add-Member -type NoteProperty -name HBA_Name -Value $VMHba.Name
     $objOneHBA | Add-Member -type NoteProperty -name HBA_Model -Value $VMHba.Model
-    $objOneHBA | Add-Member -type NoteProperty -name HBA_Module -Value $lpfc.Module
-    $objOneHBA | Add-Member -type NoteProperty -name HBA_Version -Value $lpfc.Versions
+    $objOneHBA | Add-Member -type NoteProperty -name HBA_Driver -Value $driver_name
+    $objOneHBA | Add-Member -type NoteProperty -name HBA_Version -Value $driver_version
     $arrHBADetail += $objOneHBA
   }
  $results2 += $arrHBADetail
-} 
+}  
 $results2 | Export-Csv "C:\Users\Eric Sarakaitis\Documents\testreport2.csv"
