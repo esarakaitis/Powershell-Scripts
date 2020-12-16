@@ -1,10 +1,8 @@
 
-#Eliminate cert warnings...
 #Set-PowerCLIConfiguration -InvalidCertificateAction Prompt
 
-#Connect-VIServer -Server [ip_address]
+#Connect-VIServer -Server 10.11.190.49
 
-#Filter by cluster (testing)
 $ClusterName = ''
 
 #region Get List of Hosts
@@ -19,7 +17,8 @@ else
 #endregion Get List of Hosts
  
 $results = @()
-
+$arrteampol = @()
+ 
 #region Loop thru hosts
 foreach ($VMHost in $VMHosts)
 {
@@ -27,23 +26,22 @@ foreach ($VMHost in $VMHosts)
 	$arrNicDetail = @()
     $arrHBADetail = @()
     $arrPathDetail = @()
-    $arrteampol = @()
+# ow my ballz  ->$arrteampol = @()
 
     #Get View info
-	$esxcli = $VMHost | Get-EsxCli
+	$esxcli = Get-VMHost $VMHost | Get-EsxCli
     $hostview = Get-View -ViewType HostSystem -Property Name,Config.StorageDevice,Hardware -Filter @{"Name" = $VMHost.Name}
     $hostbios = $hostview.Hardware.BiosInfo.BiosVersion
     $clustername = $VMHost.Parent
     $hostname = $VMHost.Name
 
 	#Get list of NICs on host
-	$VMHostNetworkAdapters = $VMHost | Get-VMHostNetworkAdapter | Where-Object { $_.Name -like "vmnic*" }
-    $ntpstatus = $VMHost | Get-VMHostService | Where-Object {$_.key -eq "ntpd"} | select Running
+	$VMHostNetworkAdapters = Get-VMHost $VMHost | Get-VMHostNetworkAdapter | Where-Object { $_.Name -like "vmnic*" }
+    $ntpstatus = Get-VMHost $VMHost | Get-VMHostService | Where-Object {$_.key -eq "ntpd"} | select Running
 
 
     Write-Host "Checking" $VMHost.Name
-
-#region get vSwitch info
+    #region get vSwitch info
 
     #First get vDS info
     $vDS = Get-VDSwitch -VMHost $VMHost
@@ -89,6 +87,8 @@ foreach ($VMHost in $VMHosts)
         }
     }
 #endregion get vSwitch info
+}
+
 
 
 #region generate NIC report	
@@ -120,6 +120,7 @@ foreach ($VMHost in $VMHosts)
 
 
 #region generate HBA report
+try{
     $HBAs = $VMHost | Get-VMHostHba | Where-Object {$_.Status -eq 'online'}# | Where-Object {$_.Type -eq 'FibreChannel'}
 
     foreach ($vmhba in $HBAs) 
@@ -128,8 +129,6 @@ foreach ($VMHost in $VMHosts)
         $driver_name = $vmhba.Driver
         $driver_version = $esxcli.system.module.get($driver_name) | select-object -Expandproperty Version
         $objHBAProps = $esxcli.storage.san.fc.list($vmhba.Device)
-        
-        $VMHostScsiLuns = Get-ScsiLun -Hba $vmhba 
 
         $luncount = 0
         $total = 0
@@ -170,9 +169,27 @@ foreach ($VMHost in $VMHosts)
 
     $results += $arrHBADetail
 }  
+
+catch
+{
+        $objOneInt = New-Object PSObject
+        $objOneInt | Add-Member -type NoteProperty -name Host_Name -Value $VMHost.Name
+        $objOneInt | Add-Member -type NoteProperty -name Int_Name -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Int_Model -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Int_Driver_Name -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Int_Driver_Version -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name FirmwareVersion -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name LUN_Count -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Active_Paths -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Standby_Paths -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Dead_Paths -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name Total_Paths -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name HostBiosVersion -Value "Access Denied"
+        $objOneInt | Add-Member -type NoteProperty -name HostNTPStatus -Value "Access Denied"
+        $arrHBADetail += $objOneInt
+}
 #endregion generate HBA report
 
 #endregion Loop thru hosts
-
-$results | Export-Csv "C:\temp\report.csv"
-$arrteampol | Export-Csv "C:\temp\teaming.csv"
+$results | Export-Csv "C:\path\to\file\report.csv"
+$arrteampol | Export-Csv "C:\path\to\file\teaming.csv"
