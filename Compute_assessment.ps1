@@ -1,8 +1,4 @@
 
-#Set-PowerCLIConfiguration -InvalidCertificateAction Prompt
-
-#Connect-VIServer -Server 10.11.190.49
-
 $ClusterName = ''
 
 #region Get List of Hosts
