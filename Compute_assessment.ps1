@@ -22,7 +22,6 @@ foreach ($VMHost in $VMHosts)
 	$arrNicDetail = @()
     $arrHBADetail = @()
     $arrPathDetail = @()
-# ow my ballz  ->$arrteampol = @()
 
     #Get View info
 	$esxcli = Get-VMHost $VMHost | Get-EsxCli
