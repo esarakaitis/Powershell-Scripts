@@ -1,4 +1,4 @@
-$log_file="\\techcentral\ccs_docs\Server_Team\Adam\logfile.log"
+$log_file="\\path\to\share\logs\logfile.log"
 echo "Checking server uptime..."
 echo "Checking server uptime..." | Out-File $log_file -width 240 -Append #logs the result
 $servers=Get-XAServer 
